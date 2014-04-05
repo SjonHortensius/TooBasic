@@ -4,7 +4,7 @@ class TooBasic_Template
 {
 	protected $_file;
 
-	public function __construct($file)
+	public function __construct($file = null)
 	{
 		$this->_file = $file;
 	}

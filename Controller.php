@@ -20,10 +20,12 @@ class TooBasic_Controller
 		new static(strtolower($_SERVER['REQUEST_METHOD']), $action, $params);
 	}
 
-	protected function __construct($method, $action, array $params)
+	final private function __construct($method, $action, array $params)
 	{
 		try
 		{
+			$this->_construct($method, $action, $params);
+
 			if (method_exists($this, $method . ucfirst($action)))
 				return call_user_func_array(array($this, $method . ucfirst($action)), $params);
 
@@ -33,6 +35,10 @@ class TooBasic_Controller
 		{
 			return $this->_handle($e);
 		}
+	}
+
+	protected function _construct()
+	{
 	}
 
 	public function __call($method, array $arguments)
