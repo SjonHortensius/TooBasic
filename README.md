@@ -45,7 +45,7 @@ location /
 Examples
 ========
 
-A more verbose usage example which demonstrates most features:
+A more complete usage example which demonstrates most features:
 
 ```php
 <?php
