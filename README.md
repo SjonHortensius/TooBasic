@@ -97,6 +97,12 @@ class My_First_Site extends TooBasic_Controller
 		return $this->getPage('thanks');
 	}
 
+	// You can also define a generic method which gets called when the specific action is unknown
+	public function get($action)
+	{
+		throw new Exception('Sorry we have never heard of this "'. $action .'" you speak of');
+	}
+
 	// This action gets called when an error occurs; eg the action is unknown
 	protected function _handle(Exception $e)
 	{
