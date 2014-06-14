@@ -22,6 +22,9 @@ class TooBasic_Controller
 
 	final private function __construct($method, $action, array $params)
 	{
+		if ('head' == $method)
+			$method = 'get';
+
 		try
 		{
 			$this->_construct($method, $action, $params);
@@ -49,7 +52,10 @@ class TooBasic_Controller
 	protected function _handle(Exception $e)
 	{
 		if (!headers_sent())
+		{
+			header('Content-Type: text/plain');
 			http_response_code(500);
+		}
 
 		echo $e;
 	}
