@@ -2,7 +2,7 @@
 
 class TooBasic_Pdo extends Pdo
 {
-	public function __construct($dsn, $username = null, $password = null, array $options = [])
+	public function __construct($dsn, $username = null, $password = null, array $options = array())
 	{
 		parent::__construct($dsn, $username, $password, $options);
 
