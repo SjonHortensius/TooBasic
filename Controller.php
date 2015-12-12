@@ -32,11 +32,11 @@ class TooBasic_Controller
 			if (method_exists($this, $method . ucfirst($action)))
 				return call_user_func_array(array($this, $method . ucfirst($action)), $params);
 
-			return call_user_func_array(array($this, $method), array_merge(array($action), $params));
+			call_user_func_array(array($this, $method), array_merge(array($action), $params));
 		}
 		catch (Exception $e)
 		{
-			return $this->_handle($e);
+			$this->_handle($e);
 		}
 	}
 
@@ -57,6 +57,6 @@ class TooBasic_Controller
 			http_response_code(500);
 		}
 
-		echo $e;
+		print $e;
 	}
 }

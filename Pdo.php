@@ -9,7 +9,7 @@ class TooBasic_Pdo extends Pdo
 		$this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 
-	public function fetchObject($query, array $params, $class = 'StdClass')
+	public function fetchObject($query, array $params = [], $class = 'StdClass')
 	{
 		$r = $this->fetchObjects($query, $params, $class);
 
