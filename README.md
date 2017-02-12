@@ -11,9 +11,12 @@ Checkout TooBasic in the directory where you want to store your own code. Config
 ```php
 <?php
 
-require('TooBasic/init.php');
+spl_autoload_register(function($class){
+	if (0 === strpos($class, 'TooBasic\\'))
+		require(__DIR__ .'/'. str_replace('\\', '/', $class) .'.php');
+});
 
-class My_First_Site extends TooBasic_Controller
+class My_First_Site extends TooBasic\Controller
 {
 }
 
@@ -50,9 +53,12 @@ A more complete usage example which demonstrates most features:
 ```php
 <?php
 
-require('TooBasic/init.php');
+spl_autoload_register(function($class){
+	if (0 === strpos($class, 'TooBasic\\'))
+		require(__DIR__ .'/'. str_replace('\\', '/', $class) .'.php');
+});
 
-class My_First_Site extends TooBasic_Controller
+class My_First_Site extends TooBasic\Controller
 {
 	protected $_db;
 	protected $_tpl;
@@ -61,7 +67,7 @@ class My_First_Site extends TooBasic_Controller
 	protected function _construct()
 	{
 		$this->_db = new Pdo(/* missing parameters */);
-		$this->_tpl = new TooBasic_Template;
+		$this->_tpl = new TooBasic\Template;
 
 		// Define some variables which are available in all templates
 		$this->_tpl->title = 'My first site';
@@ -111,9 +117,9 @@ class My_First_Site extends TooBasic_Controller
 
 		// This is an alternative syntax for Template; it is equal
 		// to $this->_tpl->get('error')->getWrapped() but has a
-		// separate scope. Thus, it doesn't know about 'title' in 
+		// separate scope. Thus, it doesn't know about 'title' in
 		// this example, only 'exception' is available
-		TooBasic_Template::show('error', ['exception' => $e]);
+		TooBasic\Template::show('error', ['exception' => $e]);
 	}
 }
 

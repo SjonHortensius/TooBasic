@@ -1,6 +1,6 @@
-<?php
+<?php namespace TooBasic;
 
-class TooBasic_Pdo extends Pdo
+class Pdo extends \Pdo
 {
 	public function __construct($dsn, $username = null, $password = null, array $options = array())
 	{

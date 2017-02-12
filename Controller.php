@@ -1,6 +1,6 @@
-<?php
+<?php namespace TooBasic;
 
-class TooBasic_Controller
+class Controller
 {
 	public static function dispatch($path = null)
 	{

@@ -1,6 +1,6 @@
-<?php
+<?php namespace TooBasic;
 
-class TooBasic_Template
+class Template
 {
 	protected $_file;
 
