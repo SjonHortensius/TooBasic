@@ -6,7 +6,7 @@ A very basic Controller and Template class to kickstart a simple PHP application
 Usage
 =====
 
-Checkout TooBasic in the directory where you want to store your own code. Configure your webserver to send all requests to your index.php file. Then create a class like this in your index.php:
+Clone this repository (or use submodules) in the directory where you want to store your own code. Then create `index.php` like this:
 
 ```php
 <?php
@@ -20,12 +20,12 @@ class My_First_Site extends TooBasic\Controller
 {
 }
 
-My_First_Site::dispatch();
+My_First_Site::dispatch($_SERVER['QUERY_STRING']);
 ````
 
-Additionally, TooBasic expects a *tpl* directory with at least a **_wrapper.php** file.
+Additionally, TooBasic\Template expects a *tpl* directory with at least a **_wrapper.php** file.
 
-Configuring your webserver isn't hard; for Apache you create a .htaccess file with these contents:
+The above `dispatch()` call works for URLs like `http://example.com/MyFirstSite/?page/contact`. If you want nice URLs you should send all requests to index.php. For Apache; create a .htaccess file with these contents:
 
 ```
 RewriteEngine On
