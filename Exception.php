@@ -2,7 +2,7 @@
 
 class Exception extends \Exception
 {
-	public function __construct($message, $params = [], $code = 500, Exception $cause = null)
+	public function __construct(string $message, array $params = [], int $code = 500, Exception $cause = null)
 	{
 		if (!empty($params))
 			$message = vsprintf($message, $params);

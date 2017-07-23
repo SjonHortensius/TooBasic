@@ -2,7 +2,7 @@
 
 class Controller
 {
-	public static function dispatch($path = null)
+	public static function dispatch(string $path = null)
 	{
 		if (!isset($path))
 			$path = $_SERVER['REQUEST_URI'];
@@ -20,7 +20,7 @@ class Controller
 		new static(strtolower($_SERVER['REQUEST_METHOD']), $action, $params);
 	}
 
-	final private function __construct($method, $action, array $params)
+	final private function __construct(string $method, string $action, array $params)
 	{
 		if ('head' == $method)
 			$method = 'get';
@@ -44,7 +44,7 @@ class Controller
 	{
 	}
 
-	public function __call($method, array $arguments)
+	public function __call(string $method, array $arguments)
 	{
 		throw new Exception('404 - Unknown method: '. $method);
 	}
