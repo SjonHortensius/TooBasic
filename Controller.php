@@ -30,9 +30,9 @@ class Controller
 			$this->_construct($method, $action, $params);
 
 			if (method_exists($this, $method . ucfirst($action)))
-				return call_user_func_array(array($this, $method . ucfirst($action)), $params);
+				return $this->{$method . ucfirst($action)}(...$params);
 
-			call_user_func_array(array($this, $method), array_merge(array($action), $params));
+			$this->$method(...array_merge(array($action), $params));
 		}
 		catch (Exception $e)
 		{

@@ -35,12 +35,18 @@ class Template
 		print $tpl->getWrapped();
 	}
 
+	public function __call($name, $arguments)
+	{
+		if (isset($this->$name) && $this->$name instanceof \Closure)
+			return $this->$name->__invoke(...$arguments);
+	}
+
 	public function __toString()
 	{
 		ob_start();
 
 		require('tpl/'. $this->_file .'.php');
 
-		return ob_get_clean();
+		return str_replace(["\t", "\n"], '', ob_get_clean());
 	}
 }
