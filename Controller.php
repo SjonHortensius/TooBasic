@@ -40,7 +40,7 @@ class Controller
 		}
 	}
 
-	protected function _construct()
+	protected function _construct(string $method, string $action, array $params)
 	{
 	}
 
