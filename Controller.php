@@ -34,7 +34,7 @@ class Controller
 
 			$this->$method(...array_merge(array($action), $params));
 		}
-		catch (Exception $e)
+		catch (\Exception $e)
 		{
 			$this->_handle($e);
 		}
@@ -49,13 +49,10 @@ class Controller
 		throw new Exception('404 - Unknown method: '. $method);
 	}
 
-	protected function _handle(Exception $e)
+	protected function _handle(\Exception $e)
 	{
 		if (!headers_sent())
-		{
-			header('Content-Type: text/plain');
-			http_response_code(500);
-		}
+			http_response_code($e instanceof Exception ? $e->getCode() : 500);
 
 		print $e;
 	}

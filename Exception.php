@@ -9,4 +9,12 @@ class Exception extends \Exception
 
 		parent::__construct($message, $code, $cause);
 	}
+
+	public static function errorHandler($number, $string, $file, $line): void
+	{
+		if (ini_get('error_reporting') > 0)
+			error_log($string .' in '. $file .' on line '. $line);
+
+		throw new Exception('An unexpected error has occurred');
+	}
 }
