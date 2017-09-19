@@ -64,7 +64,7 @@ class My_First_Site extends TooBasic\Controller
 	protected $_tpl;
 
 	// This method gets called before the actual action-method
-	protected function _construct()
+	protected function _construct(string $method, string $action, array $params)
 	{
 		$this->_db = new Pdo(/* missing parameters */);
 		$this->_tpl = new TooBasic\Template;
