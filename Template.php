@@ -39,6 +39,8 @@ class Template
 	{
 		if (isset($this->$name) && $this->$name instanceof \Closure)
 			return $this->$name->__invoke(...$arguments);
+
+		throw new Exception('Call to undefined method Template::'.$name.'()');
 	}
 
 	public function __toString()
